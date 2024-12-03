@@ -1,9 +1,9 @@
-const Task=({Tasks})=>{
+const Task=({Task})=>{
     return(
         <div>
-            <h1>{Tasks.title}</h1>
-            <p>{Tasks.description}</p>
-            <p>{Tasks.isCompleted}</p>
+            <h1>{Task.title}</h1>
+            <p>{Task.description}</p>
+            <p>{Task.isCompleted}</p>
         </div>
     )
 }

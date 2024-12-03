@@ -1,9 +1,10 @@
 import './App.css'
-import Task from './Components/Task/Task'
+import Tasklist from './Components/Tasklist/Tasklist'
 import Tasks from './Components/Tasks/Tasks'
 function App() {
   return (
     <div>
+      <Tasklist Tasks={Tasks}/>
     </div>
   )
 }
