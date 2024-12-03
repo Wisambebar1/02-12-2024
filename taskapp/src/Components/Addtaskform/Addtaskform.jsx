@@ -26,7 +26,7 @@ const Addtaskform=()=>{
                 </div>
                 <button onClick={handleTask} type="submit">Submit</button>
             </form>
-            <Tasklist title={title} Description={Description}/>
+            <Tasklist tasks={tasks}/>
         </div> 
     )
 }

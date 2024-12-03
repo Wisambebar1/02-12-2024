@@ -1,9 +1,9 @@
 import './App.css'
-import Tasklist from "./Components/Addtaskform/Addtaskform"
+import Addtaskform from './Components/Addtaskform/Addtaskform'
 function App() {
   return (
     <div>
-      <Tasklist/>
+      <Addtaskform/>
     </div>
   )
 }
