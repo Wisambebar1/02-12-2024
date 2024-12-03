@@ -10,21 +10,24 @@ const Addtaskform=()=>{
     const handleDescription=(e)=>{
         setDescription(e.target.value);
     }
-    const handleTask=()=>{
+    const handleTask=(e)=>{
+        e.preventDefault()
         setTasks([...tasks,{title,Description}])
+        setTitle("")
+        setDescription("")
     }
     return(
         <div>
-            <form /*onSubmit=""*/>
+            <form onSubmit={handleTask}>
                 <div>
                     <label htmlFor="Title">Title:</label>
-                    <input onChange={handleTitle} type="text" name="Title" required/>
+                    <input value={title} onChange={handleTitle} type="text" name="Title" required/>
                 </div>
                 <div>
                     <label htmlFor="Description">Description:</label>
-                    <textarea onChange={handleDescription} name="Description" required/>
+                    <textarea value={Description} onChange={handleDescription} name="Description" required/>
                 </div>
-                <button onClick={handleTask} type="submit">Submit</button>
+                <button type="submit">Submit</button>
             </form>
             <Tasklist tasks={tasks}/>
         </div> 
