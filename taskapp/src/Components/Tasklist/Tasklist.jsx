@@ -1,8 +1,8 @@
 import Task from "../Task/Task"
-const Tasklist=({Tasks})=>{
+const Tasklist=({tasks})=>{
     return(
         <div>
-            {Tasks.map((item,index)=>{
+            {tasks.map((item,index)=>{
                 return(
                 <Task Task={item} key={index}/>
                 )
