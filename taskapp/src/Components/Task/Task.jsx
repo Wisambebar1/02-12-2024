@@ -3,7 +3,7 @@ const Task=({Task})=>{
     let [task,settask]=useState(Task)
     let [isCompleted,setIsCompleted]=useState("false")
     const handleClick=()=>{
-        if(isCompleted===true){
+        if(isCompleted==="true"){
             setIsCompleted("false")
         }
         else{
@@ -11,15 +11,16 @@ const Task=({Task})=>{
         }
     }
     const handleDelete=()=>{
-        settask([])
-        setIsCompleted("")
+        settask(null)
     }
     return(
         <div>
+            {task && (<>
             <h1>{task.title}</h1>
             <p>{task.Description}</p>
             <button onClick={handleClick}>{isCompleted}</button>
             <button onClick={handleDelete}>Delete</button>
+            </>)}
         </div>
     )
 }
