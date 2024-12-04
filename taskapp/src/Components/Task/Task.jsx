@@ -17,7 +17,7 @@ const Task=({Task})=>{
         <div>
             {task && (<>
             <h1>{task.title}</h1>
-            <p>{task.Description}</p>
+            <p>{task.description}</p>
             <button onClick={handleClick}>{isCompleted}</button>
             <button onClick={handleDelete}>Delete</button>
             </>)}

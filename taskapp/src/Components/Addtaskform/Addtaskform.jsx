@@ -2,7 +2,7 @@ import { useState } from "react"
 import Tasklist from "../Tasklist/Tasklist"
 const Addtaskform=()=>{
     let [title,setTitle]=useState("");
-    let [Description,setDescription]=useState("");
+    let [description,setDescription]=useState("");
     let [tasks,setTasks]=useState([]);
     const handleTitle=(e)=>{
         setTitle(e.target.value);
@@ -12,7 +12,7 @@ const Addtaskform=()=>{
     }
     const handleTask=(e)=>{
         e.preventDefault()
-        setTasks([...tasks,{title,Description}])
+        setTasks([...tasks,{title,description}])
         setTitle("")
         setDescription("")
     }
@@ -25,7 +25,7 @@ const Addtaskform=()=>{
                 </div>
                 <div>
                     <label htmlFor="Description">Description:</label>
-                    <textarea value={Description} onChange={handleDescription} name="Description" required/>
+                    <textarea value={description} onChange={handleDescription} name="Description" required/>
                 </div>
                 <button type="submit">Submit</button>
             </form>
