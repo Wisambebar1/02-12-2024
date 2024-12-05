@@ -3,6 +3,7 @@ import Tasklist from "../Tasklist/Tasklist"
 const Addtaskform=()=>{
     let [title,setTitle]=useState("");
     let [description,setDescription]=useState("");
+    let newtask={title,description}
     let [tasks,setTasks]=useState([]);
     const handleTitle=(e)=>{
         setTitle(e.target.value);
@@ -12,7 +13,7 @@ const Addtaskform=()=>{
     }
     const handleTask=(e)=>{
         e.preventDefault()
-        setTasks([...tasks,{title,description}])
+        setTasks(prev=>[...prev,newtask])
         setTitle("")
         setDescription("")
     }
@@ -29,7 +30,7 @@ const Addtaskform=()=>{
                 </div>
                 <button type="submit">Submit</button>
             </form>
-            <Tasklist tasks={tasks}/>
+            <Tasklist tasks={tasks} newtask={newtask}/>
         </div> 
     )
 }
