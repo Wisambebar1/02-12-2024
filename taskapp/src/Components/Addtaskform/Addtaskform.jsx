@@ -1,10 +1,32 @@
-import { useState } from "react"
+import { useState,useEffect } from "react"
 import Tasklist from "../Tasklist/Tasklist"
 const Addtaskform=()=>{
     let [title,setTitle]=useState("");
     let [description,setDescription]=useState("");
-    let newtask={title,description}
     let [tasks,setTasks]=useState([]);
+    let [newtask,setNewTask]=useState(null)
+    useEffect(()=>{
+        const pos=async()=>{
+            try{
+                const res=await fetch("https://675041e669dc1669ec1a55ad.mockapi.io/tasks"
+                    ,{
+                        method:"POST",
+                        headers:{"Content-Type":"application/json"},
+                        body:JSON.stringify(newtask)
+                    }
+                );
+                if(!res.ok){
+                    throw new Error("Network res was not ok")
+                }
+                const data=await res.json()
+                console.log(data)
+            }
+            catch(error){
+                console.error(error)
+            }
+        }
+        pos()
+    },[newtask])
     const handleTitle=(e)=>{
         setTitle(e.target.value);
     }
@@ -12,8 +34,9 @@ const Addtaskform=()=>{
         setDescription(e.target.value);
     }
     const handleTask=(e)=>{
+         setNewTask({title,description})
         e.preventDefault()
-        setTasks(prev=>[...prev,newtask])
+        setTasks((prev)=>[...prev,newtask])
         setTitle("")
         setDescription("")
     }
@@ -30,7 +53,7 @@ const Addtaskform=()=>{
                 </div>
                 <button type="submit">Submit</button>
             </form>
-            <Tasklist tasks={tasks} newtask={newtask}/>
+            <Tasklist tasks={tasks}/>
         </div> 
     )
 }
