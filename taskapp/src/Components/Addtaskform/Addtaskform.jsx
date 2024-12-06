@@ -4,9 +4,20 @@ const Addtaskform=()=>{
     let [title,setTitle]=useState("");
     let [description,setDescription]=useState("");
     let [tasks,setTasks]=useState([]);
-    let [newtask,setNewTask]=useState(null)
+    const fetc=async ()=>{
+        try{
+            const response=await fetch("https://675041e669dc1669ec1a55ad.mockapi.io/tasks")
+            const datas=await response.json();
+            setTasks(datas)
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
     useEffect(()=>{
-        const pos=async()=>{
+        fetc()
+    },[])
+        const pos=async(newtask)=>{
             try{
                 const res=await fetch("https://675041e669dc1669ec1a55ad.mockapi.io/tasks"
                     ,{
@@ -18,15 +29,11 @@ const Addtaskform=()=>{
                 if(!res.ok){
                     throw new Error("Network res was not ok")
                 }
-                const data=await res.json()
-                console.log(data)
             }
             catch(error){
                 console.error(error)
             }
         }
-        pos()
-    },[newtask])
     const handleTitle=(e)=>{
         setTitle(e.target.value);
     }
@@ -34,11 +41,15 @@ const Addtaskform=()=>{
         setDescription(e.target.value);
     }
     const handleTask=(e)=>{
-         setNewTask({title,description})
+        if(title&&description){
+         let newtask={title,description}
         e.preventDefault()
         setTasks((prev)=>[...prev,newtask])
         setTitle("")
         setDescription("")
+        pos(newtask)
+        fetc()
+        }  
     }
     return(
         <div>

@@ -1,6 +1,6 @@
 import Task from "../Task/Task"
 import { useState,useEffect } from "react"
-const Tasklist=()=>{
+const Tasklist=({tasks})=>{
     let [newTasks,setNewTasks]=useState([])
     useEffect(()=>{
          const fet=async()=>{
@@ -14,7 +14,7 @@ const Tasklist=()=>{
             }
         }
         fet()
-    },[])
+    },[tasks])
     return(
         <div>
             {newTasks.map((item,index)=>{
