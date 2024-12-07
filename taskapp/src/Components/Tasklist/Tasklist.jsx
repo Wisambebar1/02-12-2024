@@ -2,6 +2,7 @@ import Task from "../Task/Task"
 import { useState,useEffect } from "react"
 const Tasklist=({tasks})=>{
     let [newTasks,setNewTasks]=useState([])
+    let [loading,setLoading]=useState(true);
     useEffect(()=>{
          const fet=async()=>{
             try{
@@ -12,16 +13,22 @@ const Tasklist=({tasks})=>{
             catch(error){
                 console.log(error)
             }
+            finally{
+                setLoading(false)
+            }
         }
         fet()
     },[tasks])
     return(
         <div>
+            {loading?(<p>Loading...</p>):(
+                <>
             {newTasks.map((item,index)=>{
                 return(
                 <Task Task={item} key={index}/>
                 )
             })}
+            </>)} 
         </div>
     )
 }
