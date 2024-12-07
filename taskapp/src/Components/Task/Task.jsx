@@ -2,6 +2,20 @@ import {useState} from "react"
 const Task=({Task})=>{
     let [task,settask]=useState(Task)
     let [isCompleted,setIsCompleted]=useState("false")
+    const deletetask=async ()=>{
+        try{
+            const req=fetch(`https://675041e669dc1669ec1a55ad.mockapi.io/tasks/${task.id}`,{
+                method:"DELETE",
+                headers:{"Content-Type":"application/json"},
+            })
+            if (!req.ok){
+                throw new("failed to delete task")
+            }
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
     const completeUpdate=async (isCompleted)=>{
         try{
             const resp=await fetch(`https://675041e669dc1669ec1a55ad.mockapi.io/tasks/${task.id}`
@@ -33,6 +47,7 @@ const Task=({Task})=>{
     }
     const handleDelete=()=>{
         settask(null)
+        deletetask()
     }
     return(
         <div>
