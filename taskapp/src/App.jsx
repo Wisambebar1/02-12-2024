@@ -1,7 +1,6 @@
 import { useContext } from 'react'
 import './App.css'
 import Addtaskform from './Components/Addtaskform/Addtaskform'
-import { AppContextProvider} from './Components/Appcontext/Appcontext'
 import appContext from "./Components/Appcontext/Appcontext"
 function App() {
   let {theme,setTheme,handleTheme}=useContext(appContext)
