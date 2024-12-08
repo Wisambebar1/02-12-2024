@@ -4,15 +4,7 @@ import Addtaskform from './Components/Addtaskform/Addtaskform'
 import { AppContextProvider} from './Components/Appcontext/Appcontext'
 import appContext from "./Components/Appcontext/Appcontext"
 function App() {
-  let {theme,setTheme}=useContext(appContext)
-  const handleTheme=()=>{
-    if(theme==="grey"){
-      setTheme("white")
-    }
-    else{
-      setTheme("grey")
-    }
-  }
+  let {theme,setTheme,handleTheme}=useContext(appContext)
   return (
     <div style={{backgroundColor:theme}}>
         <Addtaskform/>
