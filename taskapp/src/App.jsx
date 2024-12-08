@@ -1,9 +1,12 @@
 import './App.css'
 import Addtaskform from './Components/Addtaskform/Addtaskform'
+import { AppContextProvider } from './Components/Appcontext/Appcontext'
 function App() {
   return (
     <div>
-      <Addtaskform/>
+      <AppContextProvider>
+        <Addtaskform/>
+      </AppContextProvider>
     </div>
   )
 }

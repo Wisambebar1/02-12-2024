@@ -1,8 +1,11 @@
-const Appcontext=()=>{
+import { createContext,useContext,useState} from "react"
+const appContext=createContext()
+export const AppContextProvider=({children})=>{
+    const [value,setValue]=useState("asd")
     return(
-        <div>
-
-        </div>
+        <appContext.Provider value={{value,setValue}}>
+            {children}
+        </appContext.Provider>
     )
 }
-export default Appcontext
+export default appContext
